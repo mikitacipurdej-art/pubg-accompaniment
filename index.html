@@ -308,22 +308,21 @@ function renderPlayers(list) {
   message.style.display = "none";
 
   list.forEach(player => {
-    container.innerHTML += 
-      <div class="player">
-        <div class="player-info">
-          <div class="avatar">${player.avatar}</div>
-          <div>
-            <div class="name">${player.name}</div>
-            <div class="id">ID: ${player.id}</div>
-          </div>
-        </div>
-
-        <div class="score">
-          ${player.score}
-        </div>
+container.innerHTML +=' 
+  <div class="player">
+    <div class="player-info">
+      <div class="avatar">${player.avatar}</div>
+      <div>
+        <div class="name">${player.name}</div>
+        <div class="id">ID: ${player.id}</div>
       </div>
-    ;
-  });
+    </div>
+
+    <div class="score">
+      ${player.score}
+    </div>
+  </div>
+;'
 }
 
 function searchPlayers() {
