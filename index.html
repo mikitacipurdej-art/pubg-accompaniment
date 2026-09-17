@@ -1,186 +1,359 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PUBG Mobile — Сопровождение</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PUBG Mobile — Сопровождение</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    body {
-      min-height: 100vh;
-      font-family: Arial, Helvetica, sans-serif;
-      color: #ffffff;
-      background:
-        linear-gradient(rgba(2, 10, 24, 0.72), rgba(1, 7, 18, 0.94)),
-        radial-gradient(circle at 70% 20%, #073b72 0%, #03172e 35%, #010812 75%);
-      overflow-x: hidden;
-    }
+body {
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #fff;
+  background:
+    radial-gradient(circle at 50% 0%, #073b72 0%, #03172e 35%, #010812 75%);
+  overflow-x: hidden;
+}
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background:
-        radial-gradient(circle at 20% 30%, rgba(0, 110, 255, 0.16), transparent 28%),
-        radial-gradient(circle at 80% 50%, rgba(0, 140, 255, 0.10), transparent 32%);
-    }
+header {
+  min-height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 5%;
+  border-bottom: 1px solid rgba(71,153,255,.2);
+  background: rgba(2,13,30,.9);
+}
 
-    header {
-      height: 94px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 5%;
-      border-bottom: 1px solid rgba(71, 153, 255, 0.18);
-      background: rgba(2, 13, 30, 0.82);
-      backdrop-filter: blur(10px);
-    }
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-    }
+.logo {
+  border: 3px solid white;
+  border-radius: 7px;
+  padding: 9px 12px;
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 1;
+}
 
-    .logo {
-      width: 92px;
-      height: 58px;
-      border: 3px solid white;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 900;
-      font-size: 19px;
-      letter-spacing: -1px;
-      position: relative;
-    }
+.logo small {
+  display: block;
+  font-size: 8px;
+  letter-spacing: 3px;
+  text-align: center;
+  margin-top: 5px;
+}
 
-    .logo::after {
-      content: "MOBILE";
-      position: absolute;
-      bottom: -18px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 10px;
-      letter-spacing: 2px;
-    }
+.title {
+  font-size: 26px;
+  font-weight: 700;
+}
 
-    .title {
-      font-size: 28px;
-      font-weight: 700;
-    }
+.login {
+  color: #b8cbe3;
+}
 
-    .login {
-      color: #c8d8ee;
-      font-size: 17px;
-    }
+main {
+  width: min(1100px, 92%);
+  margin: 65px auto;
+}
 
-    main {
-      width: min(1130px, 92%);
-      margin: 74px auto 60px;
-      position: relative;
-    }
+.hero {
+  text-align: center;
+  margin-bottom: 35px;
+}
 
-    .hero {
-      text-align: center;
-      margin-bottom: 35px;
-    }
+.hero h1 {
+  font-size: clamp(32px, 7vw, 55px);
+  margin-bottom: 12px;
+  text-shadow: 0 0 25px #087cff;
+}
 
-    .hero h1 {
-      font-size: clamp(30px, 5vw, 54px);
-      margin-bottom: 12px;
-      text-shadow: 0 0 25px rgba(0, 125, 255, 0.65);
-    }
+.hero p {
+  color: #91a9c6;
+  font-size: 17px;
+}
 
-    .hero p {
-      color: #91a9c6;
-      font-size: 17px;
-    }
+.search-box {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  border: 2px solid #0874ff;
+  border-radius: 18px;
+  background: rgba(3,17,39,.95);
+  box-shadow: 0 0 25px rgba(0,103,255,.45);
+  margin-bottom: 28px;
+}
 
-    .search-box {
-      display: flex;
-      gap: 14px;
-      padding: 12px;
-      border: 2px solid #086fff;
-      border-radius: 18px;
-      background: rgba(3, 17, 39, 0.9);
-      box-shadow:
-        0 0 18px rgba(0, 103, 255, 0.45),
-        inset 0 0 25px rgba(0, 71, 155, 0.15);
-      margin-bottom: 28px;
-    }
+.search-input {
+  flex: 1;
+  min-width: 0;
+  height: 60px;
+  padding: 0 20px;
+  border: 1px solid #315a85;
+  border-radius: 12px;
+  outline: none;
+  background: #04152d;
+  color: white;
+  font-size: 18px;
+}
 
-    .search-input {
-      flex: 1;
-      height: 62px;
-      border: 1px solid rgba(83, 137, 201, 0.35);
-      border-radius: 12px;
-      outline: none;
-      padding: 0 22px;
-      color: white;
-      font-size: 18px;
-      background: rgba(4, 21, 45, 0.95);
-    }
+.search-input::placeholder {
+  color: #7086a1;
+}
 
-    .search-input::placeholder {
-      color: #7086a1;
-    }
+.search-button {
+  width: 145px;
+  border: 0;
+  border-radius: 12px;
+  background: linear-gradient(135deg,#087cff,#0755d8);
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+}
 
-    .search-input:focus {
-      border-color: #1580ff;
-      box-shadow: 0 0 15px rgba(0, 119, 255, 0.25);
-    }
+.table {
+  border: 1px solid rgba(41,106,178,.5);
+  border-radius: 17px;
+  overflow: hidden;
+  background: rgba(2,13,29,.9);
+}
 
-    .search-button {
-      width: 150px;
-      border: none;
-      border-radius: 12px;
-      color: white;
-      background: linear-gradient(135deg, #087cff, #0755d8);
-      font-size: 18px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: 0.2s;
-    }
+.table-head,
+.player {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  align-items: center;
+}
 
-    .search-button:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 0 20px rgba(0, 119, 255, 0.6);
-    }
+.table-head {
+  padding: 20px 30px;
+  color: #9eb5d0;
+  border-bottom: 1px solid rgba(51,104,158,.3);
+}
 
-    .table {
-      border: 1px solid rgba(41, 106, 178, 0.4);
-      border-radius: 17px;
-      overflow: hidden;
-      background: rgba(2, 13, 29, 0.88);
-      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.35);
-    }
+.player {
+  min-height: 95px;
+  padding: 15px 30px;
+  border-bottom: 1px solid rgba(51,104,158,.2);
+}
 
-    .table-head,
-    .player {
-      display: grid;
-      grid-template-columns: 1fr 220px;
-      align-items: center;
-    }
+.player:last-child {
+  border-bottom: 0;
+}
 
-    .table-head {
-      padding: 21px 34px;
-      color: #9eb5d0;
-      font-size: 16px;
-      border-bottom: 1px solid rgba(51, 104, 158, 0.28);
-    }
+.player-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
 
-    .player {
-      min-height: 105px;
-      padding: 15px 34px;
-      border-bottom: 1px solid rgba(51, 104, 158, 0.2);
-      transition: 0.2s;
-    }
+.avatar {
+  width: 55px;
+  height: 55px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #09294d;
+  border: 1px solid #1768ad;
+  font-size: 27px;
+}
+
+.name {
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.id {
+  color: #7189a5;
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+.score {
+  font-size: 21px;
+  font-weight: 700;
+  color: #48a8ff;
+}
+
+.message {
+  display: none;
+  text-align: center;
+  padding: 30px;
+  color: #91a9c6;
+}
+
+@media (max-width: 650px) {
+  header {
+    padding: 15px;
+  }
+
+  .title {
+    font-size: 19px;
+  }
+
+  .login {
+    display: none;
+  }
+
+  main {
+    margin-top: 40px;
+  }
+
+  .search-box {
+    flex-direction: column;
+  }
+
+  .search-button {
+    width: 100%;
+    height: 55px;
+  }
+
+  .table-head,
+  .player {
+    grid-template-columns: 1fr 100px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .score {
+    text-align: right;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="brand">
+    <div class="logo">
+      PUBG
+      <small>MOBILE</small>
+    </div>
+    <div class="title">Сопровождение</div>
+  </div>
+
+  <div class="login">Войти</div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <h1>Сопровождение игроков</h1>
+    <p>Найди игрока по нику или ID</p>
+  </section>
+
+  <div class="search-box">
+    <input
+      id="search"
+      class="search-input"
+      type="text"
+      placeholder="Введите ник или ID игрока..."
+    >
+    <button class="search-button" onclick="searchPlayers()">
+      Найти
+    </button>
+  </div>
+
+  <div class="table"><div class="table-head">
+      <div>Игрок</div>
+      <div>Сопровождений</div>
+    </div>
+
+    <div id="players"></div>
+
+    <div id="message" class="message">
+      Игрок не найден
+    </div>
+
+  </div>
+
+</main>
+
+<script>
+const players = [
+  { name: "Kortis", id: "123456789", score: 25, avatar: "🎭" },
+  { name: "Player123", id: "987654321", score: 14, avatar: "👾" },
+  { name: "Shadow", id: "555555555", score: 9, avatar: "🏆" },
+  { name: "Zloy_Pubg", id: "444444444", score: 7, avatar: "🕶️" },
+  { name: "Panda", id: "333333333", score: 5, avatar: "🐼" },
+  { name: "Raptor", id: "222222222", score: 3, avatar: "👤" },
+  { name: "DeN4ik", id: "111111111", score: 1, avatar: "🎮" }
+];
+
+function renderPlayers(list) {
+  const container = document.getElementById("players");
+  const message = document.getElementById("message");
+
+  container.innerHTML = "";
+
+  if (list.length === 0) {
+    message.style.display = "block";
+    return;
+  }
+
+  message.style.display = "none";
+
+  list.forEach(player => {
+    container.innerHTML += 
+      <div class="player">
+        <div class="player-info">
+          <div class="avatar">${player.avatar}</div>
+          <div>
+            <div class="name">${player.name}</div>
+            <div class="id">ID: ${player.id}</div>
+          </div>
+        </div>
+
+        <div class="score">
+          ${player.score}
+        </div>
+      </div>
+    ;
+  });
+}
+
+function searchPlayers() {
+  const query = document
+    .getElementById("search")
+    .value
+    .trim()
+    .toLowerCase();
+
+  if (!query) {
+    renderPlayers(players);
+    return;
+  }
+
+  const result = players.filter(player =>
+    player.name.toLowerCase().includes(query) ||
+    player.id.includes(query)
+  );
+
+  renderPlayers(result);
+}
+
+document.getElementById("search").addEventListener("keydown", event => {
+  if (event.key === "Enter") {
+    searchPlayers();
+  }
+});
+
+renderPlayers(players);
+</script>
+
+</body>
+</html>
