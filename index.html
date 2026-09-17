@@ -285,15 +285,15 @@ main {
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
-const players = [
-  { name: "Kortis", id: "123456789", score: 25, avatar: "🎭" },
-  { name: "Player123", id: "987654321", score: 14, avatar: "👾" },
-  { name: "Shadow", id: "555555555", score: 9, avatar: "🏆" },
-  { name: "Zloy_Pubg", id: "444444444", score: 7, avatar: "🕶️" },
-  { name: "Panda", id: "333333333", score: 5, avatar: "🐼" },
-  { name: "Raptor", id: "222222222", score: 3, avatar: "👤" },
-  { name: "DeN4ik", id: "111111111", score: 1, avatar: "🎮" }
-];
+const SUPABASE_URL = "https://cfgipmlrjjvtxlsldwms.supabase.co";
+const SUPABASE_KEY = "sb_publishable_2lRs6iIH0Urrw_zQZdJ0HA_ClyxMYVp";
+
+const supabase = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
+let players = [];
 
 function renderPlayers(list) {
   const container = document.getElementById("players");
