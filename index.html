@@ -357,7 +357,7 @@ async function loadPlayers() {
     .select("*");
 
   if (error) {
-    console.error(error);
+    alert("Ошибка Supabase: " + error.message);
     return;
   }
 
