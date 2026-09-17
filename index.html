@@ -361,7 +361,7 @@ async function loadPlayers() {
     alert("Ошибка Supabase: " + error.message);
     return;
   }
-
+alert("Получено игроков: " + data.length);
   players = data.map(player => ({
     name: player.nickname,
     id: player.player_id,
